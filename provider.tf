@@ -20,6 +20,7 @@ variable "vpc_name" {}
 variable "vpc_zone1" {}
 variable "vpc_zone2" {}
 variable "vpc_zone3" {}
+variable "res_group" {}
 
 
 ############################
@@ -57,12 +58,16 @@ data "ibm_is_ssh_key" "ssh_key_id" {
 # Virtual Private Cloud
 resource "ibm_is_vpc" "vpc-instance" {
   name = "${local.BASENAME}-vpc"
+  resource_group = var.res_group
+ 
 }
 
 # Security group
 resource "ibm_is_security_group" "sg1" {
    name = "${local.BASENAME}-sg1"
    vpc  = ibm_is_vpc.vpc-instance.id
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # allow all incoming network traffic on port 22
@@ -82,7 +87,9 @@ resource "ibm_is_subnet" "subnet1" {
    name                     = "${local.BASENAME}-subnet1"
    vpc                      = ibm_is_vpc.vpc-instance.id
    zone                     = local.ZONE
-   total_ipv4_address_count = 256
+   total_ipv4_address_count = 128
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Subnet 2
@@ -90,7 +97,9 @@ resource "ibm_is_subnet" "subnet2" {
    name                     = "${local.BASENAME}-subnet2"
    vpc                      = ibm_is_vpc.vpc-instance.id
    zone                     = local.ZONE2
-   total_ipv4_address_count = 256
+   total_ipv4_address_count = 128
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Subnet 3
@@ -98,7 +107,9 @@ resource "ibm_is_subnet" "subnet3" {
    name                     = "${local.BASENAME}-subnet3"
    vpc                      = ibm_is_vpc.vpc-instance.id
    zone                     = local.ZONE3
-   total_ipv4_address_count = 256
+   total_ipv4_address_count = 128
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 
@@ -119,6 +130,8 @@ resource "ibm_is_instance" "vsi1" {
    zone    = local.ZONE
    image   = data.ibm_is_image.redhat.id
    profile = "bx2-4x16"
+   resource_group = var.res_group
+   tags = "magal"
    
    # References to the subnet and security groups
    primary_network_interface {
@@ -131,6 +144,8 @@ resource "ibm_is_instance" "vsi1" {
 resource "ibm_is_floating_ip" "fip1" {
    name   = "${local.BASENAME}-fip1"
    target = ibm_is_instance.vsi1.primary_network_interface[0].id
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Virtual Server Insance 2
@@ -141,6 +156,8 @@ resource "ibm_is_instance" "vsi2" {
    zone    = local.ZONE2
    image   = data.ibm_is_image.redhat.id
    profile = "bx2-4x16"
+   resource_group = var.res_group
+   tags = "magal"
    
    # References to the subnet and security groups
    primary_network_interface {
@@ -153,6 +170,8 @@ resource "ibm_is_instance" "vsi2" {
 resource "ibm_is_floating_ip" "fip2" {
    name   = "${local.BASENAME}-fip2"
    target = ibm_is_instance.vsi2.primary_network_interface[0].id
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Virtual Server Insance 3
@@ -163,6 +182,8 @@ resource "ibm_is_instance" "vsi3" {
    zone    = local.ZONE3
    image   = data.ibm_is_image.redhat.id
    profile = "bx2-4x16"
+   resource_group = var.res_group
+   tags = "magal"
    
    # References to the subnet and security groups
    primary_network_interface {
@@ -175,6 +196,8 @@ resource "ibm_is_instance" "vsi3" {
 resource "ibm_is_floating_ip" "fip3" {
    name   = "${local.BASENAME}-fip3"
    target = ibm_is_instance.vsi3.primary_network_interface[0].id
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Virtual Server Insance 4
@@ -185,6 +208,8 @@ resource "ibm_is_instance" "vsi4" {
    zone    = local.ZONE
    image   = data.ibm_is_image.redhat.id
    profile = "bx2-4x16"
+   resource_group = var.res_group
+   tags = "magal"
    
    # References to the subnet and security groups
    primary_network_interface {
@@ -197,6 +222,8 @@ resource "ibm_is_instance" "vsi4" {
 resource "ibm_is_floating_ip" "fip4" {
    name   = "${local.BASENAME}-fip4"
    target = ibm_is_instance.vsi4.primary_network_interface[0].id
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Virtual Server Insance 5
@@ -207,6 +234,8 @@ resource "ibm_is_instance" "vsi5" {
    zone    = local.ZONE2
    image   = data.ibm_is_image.redhat.id
    profile = "bx2-4x16"
+   resource_group = var.res_group
+   tags = "magal"
    
    # References to the subnet and security groups
    primary_network_interface {
@@ -219,6 +248,8 @@ resource "ibm_is_instance" "vsi5" {
 resource "ibm_is_floating_ip" "fip5" {
    name   = "${local.BASENAME}-fip5"
    target = ibm_is_instance.vsi5.primary_network_interface[0].id
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Virtual Server Insance 6
@@ -229,6 +260,8 @@ resource "ibm_is_instance" "vsi6" {
    zone    = local.ZONE3
    image   = data.ibm_is_image.redhat.id
    profile = "bx2-4x16"
+   resource_group = var.res_group
+   tags = "magal"
    
    # References to the subnet and security groups
    primary_network_interface {
@@ -241,6 +274,8 @@ resource "ibm_is_instance" "vsi6" {
 resource "ibm_is_floating_ip" "fip6" {
    name   = "${local.BASENAME}-fip6"
    target = ibm_is_instance.vsi6.primary_network_interface[0].id
+   resource_group = var.res_group
+   tags = "magal"
 }
 
 # Try to logon to the Virtual Service Instance
