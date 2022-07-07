@@ -177,6 +177,71 @@ resource "ibm_is_floating_ip" "fip3" {
    target = ibm_is_instance.vsi3.primary_network_interface[0].id
 }
 
+# Virtual Server Insance 4
+resource "ibm_is_instance" "vsi4" {
+   name    = "${local.BASENAME}-vsi4"
+   vpc     = ibm_is_vpc.vpc-instance.id
+   keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
+   zone    = local.ZONE
+   image   = data.ibm_is_image.redhat.id
+   profile = "bx2-4x16"
+   
+   # References to the subnet and security groups
+   primary_network_interface {
+     subnet          = ibm_is_subnet.subnet1.id
+     security_groups = [ibm_is_security_group.sg1.id]
+   }
+}
+
+# Request a foaling ip 
+resource "ibm_is_floating_ip" "fip4" {
+   name   = "${local.BASENAME}-fip4"
+   target = ibm_is_instance.vsi4.primary_network_interface[0].id
+}
+
+# Virtual Server Insance 5
+resource "ibm_is_instance" "vsi5" {
+   name    = "${local.BASENAME}-vsi5"
+   vpc     = ibm_is_vpc.vpc-instance.id
+   keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
+   zone    = local.ZONE2
+   image   = data.ibm_is_image.redhat.id
+   profile = "bx2-4x16"
+   
+   # References to the subnet and security groups
+   primary_network_interface {
+     subnet          = ibm_is_subnet.subnet2.id
+     security_groups = [ibm_is_security_group.sg1.id]
+   }
+}
+
+# Request a foaling ip 
+resource "ibm_is_floating_ip" "fip5" {
+   name   = "${local.BASENAME}-fip5"
+   target = ibm_is_instance.vsi5.primary_network_interface[0].id
+}
+
+# Virtual Server Insance 6
+resource "ibm_is_instance" "vsi6" {
+   name    = "${local.BASENAME}-vsi6"
+   vpc     = ibm_is_vpc.vpc-instance.id
+   keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
+   zone    = local.ZONE3
+   image   = data.ibm_is_image.redhat.id
+   profile = "bx2-4x16"
+   
+   # References to the subnet and security groups
+   primary_network_interface {
+     subnet          = ibm_is_subnet.subnet3.id
+     security_groups = [ibm_is_security_group.sg1.id]
+   }
+}
+
+# Request a foaling ip 
+resource "ibm_is_floating_ip" "fip6" {
+   name   = "${local.BASENAME}-fip6"
+   target = ibm_is_instance.vsi6.primary_network_interface[0].id
+}
 
 # Try to logon to the Virtual Service Instance
 #output "sshcommand" {
