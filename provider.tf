@@ -67,7 +67,6 @@ resource "ibm_is_security_group" "sg1" {
    name = "${local.BASENAME}-sg1"
    vpc  = ibm_is_vpc.vpc-instance.id
    resource_group = var.res_group
-   tags = "magal"
 }
 
 # allow all incoming network traffic on port 22
@@ -89,7 +88,6 @@ resource "ibm_is_subnet" "subnet1" {
    zone                     = local.ZONE
    total_ipv4_address_count = 128
    resource_group = var.res_group
-   tags = "magal"
 }
 
 # Subnet 2
@@ -99,7 +97,6 @@ resource "ibm_is_subnet" "subnet2" {
    zone                     = local.ZONE2
    total_ipv4_address_count = 128
    resource_group = var.res_group
-   tags = "magal"
 }
 
 # Subnet 3
@@ -109,7 +106,6 @@ resource "ibm_is_subnet" "subnet3" {
    zone                     = local.ZONE3
    total_ipv4_address_count = 128
    resource_group = var.res_group
-   tags = "magal"
 }
 
 
