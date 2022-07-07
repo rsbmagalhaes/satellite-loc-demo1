@@ -58,8 +58,7 @@ data "ibm_is_ssh_key" "ssh_key_id" {
 # Virtual Private Cloud
 resource "ibm_is_vpc" "vpc-instance" {
   name = "${local.BASENAME}-vpc"
-  resource_group = var.res_group
- 
+  
 }
 
 # Security group
