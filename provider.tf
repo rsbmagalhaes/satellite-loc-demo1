@@ -108,7 +108,7 @@ resource "ibm_is_subnet" "subnet3" {
 
 # Image for Virtual Server Insance
 data "ibm_is_image" "redhat" {
-   name = "ibm-redhat-7-9-minimal-amd64-5"
+   name = "ibm-redhat-7-9-minimal-amd64-6"
 }
 
 # Virtual Server Insance 1
