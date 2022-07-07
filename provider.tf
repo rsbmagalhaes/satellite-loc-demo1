@@ -123,7 +123,7 @@ resource "ibm_is_instance" "vsi1" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = data.ibm_is_image.redhat.id
+   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
    profile = "bx2-4x16"
    resource_group = var.res_group
    
@@ -148,7 +148,7 @@ resource "ibm_is_instance" "vsi2" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE2
-   image   = data.ibm_is_image.redhat.id
+   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
    profile = "bx2-4x16"
    resource_group = var.res_group
   
@@ -174,7 +174,7 @@ resource "ibm_is_instance" "vsi3" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE3
-   image   = data.ibm_is_image.redhat.id
+   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
    profile = "bx2-4x16"
    resource_group = var.res_group
   
@@ -200,7 +200,7 @@ resource "ibm_is_instance" "vsi4" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = data.ibm_is_image.redhat.id
+   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
    profile = "bx2-4x16"
    resource_group = var.res_group
 
@@ -226,7 +226,7 @@ resource "ibm_is_instance" "vsi5" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE2
-   image   = data.ibm_is_image.redhat.id
+   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
    profile = "bx2-4x16"
    resource_group = var.res_group
 
@@ -252,7 +252,7 @@ resource "ibm_is_instance" "vsi6" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE3
-   image   = data.ibm_is_image.redhat.id
+   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
    profile = "bx2-4x16"
    resource_group = var.res_group
 
