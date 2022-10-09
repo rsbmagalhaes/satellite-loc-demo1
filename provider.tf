@@ -123,7 +123,7 @@ resource "ibm_is_instance" "vsi1" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = "r042-2faba548-4b33-4441-84f0-41f5112837c9"
+   image   = "ibm-ubuntu-20-04-minimal-amd64-2"
    profile = "bx2-4x16"
    resource_group = var.res_group
    
