@@ -72,7 +72,7 @@ data "ibm_is_image" "name" {
  
 locals {
    image_id    = data.ibm_is_image.name.id
-
+}
 
 ############################
 # Configure the IBM Provider
@@ -165,8 +165,9 @@ resource "ibm_is_subnet" "subnet3" {
 
 # Image for Virtual Server Insance
 # data "ibm_is_image" "name" {
-#   name = "ibm-redhat-7-9-minimal-amd64-7"
+# name = var.os_version
 #}
+
 
 # Virtual Server Insance 1
 resource "ibm_is_instance" "vsi1" {
