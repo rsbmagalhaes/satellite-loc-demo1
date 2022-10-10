@@ -63,6 +63,15 @@ variable "os_version" {
   description = "Check the OS versions available for VPC VSIs"
 }
 
+variable "profile"{
+ type        = string
+  default     = "bx2-4x16"
+  description = "Check the profiles available for VPC VSIs"
+}
+ 
+ 
+
+
 ############################
 #        DATA
 ############################
@@ -176,7 +185,7 @@ resource "ibm_is_instance" "vsi1" {
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
    image   = data.ibm_is_image.name.id 
-   profile = "bx2-4x16"
+   profile = var.profile
    resource_group = var.res_group
    
    # References to the subnet and security groups
@@ -200,8 +209,8 @@ resource "ibm_is_instance" "vsi2" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE2
-   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
-   profile = "bx2-4x16"
+   image   = data.ibm_is_image.name.id 
+   profile = var.profile
    resource_group = var.res_group
   
    
@@ -226,8 +235,8 @@ resource "ibm_is_instance" "vsi3" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE3
-   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
-   profile = "bx2-4x16"
+  image   = data.ibm_is_image.name.id 
+   profile = var.profile
    resource_group = var.res_group
   
    
@@ -252,8 +261,8 @@ resource "ibm_is_instance" "vsi4" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
-   profile = "bx2-4x16"
+   image   = data.ibm_is_image.name.id 
+   profile = var.profile
    resource_group = var.res_group
 
    
@@ -278,8 +287,8 @@ resource "ibm_is_instance" "vsi5" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE2
-   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
-   profile = "bx2-4x16"
+   image   = data.ibm_is_image.name.id 
+   profile = var.profile
    resource_group = var.res_group
 
    
@@ -304,8 +313,8 @@ resource "ibm_is_instance" "vsi6" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE3
-   image   = "r042-43f8c68a-24e2-40c3-8570-4629dc64ecf0"
-   profile = "bx2-4x16"
+   image   = data.ibm_is_image.name.id 
+   profile = var.profile
    resource_group = var.res_group
 
    
