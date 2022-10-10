@@ -14,13 +14,54 @@ terraform {
 variable "ibmcloud_api_key" {}
 variable "iaas_classic_username" {}
 variable "iaas_classic_api_key" {}
-variable "region" {}
-variable "my_ssh_key_name" {}
-variable "vpc_name" {}
-variable "vpc_zone1" {}
-variable "vpc_zone2" {}
-variable "vpc_zone3" {}
-variable "res_group" {}
+variable "region" {
+ type        = string
+  default     = "br-sao"
+  description = "Check the Region you want to deploy your vpc"
+}
+
+variable "my_ssh_key_name" {
+ type        = string
+#  default     = "c614fb3fa03847269c5319ac3a197e04"
+  description = "Your ssh key name"
+}
+
+variable "vpc_name" {
+ type        = string
+ default     = "ibm-demo"
+ description = "Name for vpc"
+}
+
+variable "vpc_zone1" {
+ type        = string
+  default     = "br-sao-1"
+  description = "Default zone 1 for br-sao"
+}
+
+variable "vpc_zone2" {
+ type        = string
+  default     = "br-sao-2"
+  description = "Default zone 1 for br-sao"
+}
+
+variable "vpc_zone3" {
+ type        = string
+  default     = "br-sao-3"
+  description = "Default zone 3 for br-sao"
+
+}
+
+variable "res_group" {
+  type        = string
+  default     = "c614fb3fa03847269c5319ac3a197e04"
+  description = "Default Resource Group is RG-Tadeu"
+}
+
+variable "os_version" {
+  type        = string
+  default     = "ibm-redhat-7-9-minimal-amd64-7"
+  description = "Check the OS versions available for VPC VSIs"
+}
 
 
 ############################
@@ -29,8 +70,8 @@ variable "res_group" {}
 
 provider "ibm" {
   ibmcloud_api_key    = var.ibmcloud_api_key
-  iaas_classic_username = var.iaas_classic_username
-  iaas_classic_api_key  = var.iaas_classic_api_key
+  #iaas_classic_username = var.iaas_classic_username
+  #iaas_classic_api_key  = var.iaas_classic_api_key
   region = var.region
 }
 
@@ -114,7 +155,7 @@ resource "ibm_is_subnet" "subnet3" {
 
 # Image for Virtual Server Insance
 data "ibm_is_image" "redhat" {
-   name = "ibm-redhat-7-9-minimal-amd64-6"
+   name = "ibm-redhat-7-9-minimal-amd64-7"
 }
 
 # Virtual Server Insance 1
@@ -123,7 +164,7 @@ resource "ibm_is_instance" "vsi1" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = "ibm-ubuntu-20-04-minimal-amd64-2"
+   image   = var.osversion 
    profile = "bx2-4x16"
    resource_group = var.res_group
    
