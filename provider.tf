@@ -11,9 +11,14 @@ terraform {
 # Variables
 ############################
 
-variable "ibmcloud_api_key" {}
-variable "iaas_classic_username" {}
-variable "iaas_classic_api_key" {}
+variable "ibmcloud_api_key" {
+type        = string
+  description = "API Key that will be used to create resources"
+}
+
+#variable "iaas_classic_username" {}
+#variable "iaas_classic_api_key" {}
+
 variable "region" {
  type        = string
   default     = "br-sao"
