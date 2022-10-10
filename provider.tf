@@ -67,12 +67,12 @@ variable "os_version" {
 #        DATA
 ############################
 
-data "ibm_is_image" "name" {
-  name = var.os_version
+#data "ibm_is_image" "name" {
+#  name = var.os_version
  
-locals {
-   image_id    = data.ibm_is_image.name.id
-}
+#locals {
+#  image_id    = data.ibm_is_image.name.id
+#}
 
 ############################
 # Configure the IBM Provider
@@ -164,9 +164,9 @@ resource "ibm_is_subnet" "subnet3" {
 ############################
 
 # Image for Virtual Server Insance
-# data "ibm_is_image" "name" {
-# name = var.os_version
-#}
+ data "ibm_is_image" "name" {
+ name = var.os_version
+}
 
 
 # Virtual Server Insance 1
@@ -175,7 +175,7 @@ resource "ibm_is_instance" "vsi1" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = local.image_id 
+   image   = data.ibm_is_image.name.id 
    profile = "bx2-4x16"
    resource_group = var.res_group
    
