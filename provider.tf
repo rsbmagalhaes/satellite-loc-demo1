@@ -59,9 +59,19 @@ variable "res_group" {
 
 variable "os_version" {
   type        = string
-  default     = "red-7-amd64"
+  default     = "ibm-centos-7-9-minimal-amd64-7"
   description = "Check the OS versions available for VPC VSIs"
 }
+
+############################
+#        DATA
+############################
+
+data "ibm_is_image" "name" {
+  name = var.os_version
+ 
+locals {
+   image_id    = data.ibm_is_image.name.id
 
 
 ############################
@@ -154,9 +164,9 @@ resource "ibm_is_subnet" "subnet3" {
 ############################
 
 # Image for Virtual Server Insance
-data "ibm_is_image" "redhat" {
-   name = "ibm-redhat-7-9-minimal-amd64-7"
-}
+# data "ibm_is_image" "name" {
+#   name = "ibm-redhat-7-9-minimal-amd64-7"
+#}
 
 # Virtual Server Insance 1
 resource "ibm_is_instance" "vsi1" {
@@ -164,7 +174,7 @@ resource "ibm_is_instance" "vsi1" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = var.os_version 
+   image   = local.image_id 
    profile = "bx2-4x16"
    resource_group = var.res_group
    
