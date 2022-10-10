@@ -164,7 +164,7 @@ resource "ibm_is_instance" "vsi1" {
    vpc     = ibm_is_vpc.vpc-instance.id
    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
    zone    = local.ZONE
-   image   = var.osversion 
+   image   = var.os_version 
    profile = "bx2-4x16"
    resource_group = var.res_group
    
