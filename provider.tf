@@ -138,8 +138,8 @@ resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
    group     = ibm_is_security_group.sg1.id
    direction = "inbound"
    remote    = "0.0.0.0/0"
-
-   all
+   protocol  = "all"
+  
 }
 
 # Subnet 
