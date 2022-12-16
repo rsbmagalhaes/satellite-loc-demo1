@@ -138,11 +138,6 @@ resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
    group     = ibm_is_security_group.sg1.id
    direction = "inbound"
 }
-# allow all ougoing network traffic
-resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
-   group     = ibm_is_security_group.sg1.id
-   direction = "outbound"
-}
 
 # Subnet 
 resource "ibm_is_subnet" "subnet1" {
