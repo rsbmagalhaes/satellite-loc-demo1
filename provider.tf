@@ -133,13 +133,15 @@ resource "ibm_is_security_group" "sg1" {
    resource_group = var.res_group
 }
 
-# allow all incoming network traffic on port 22
+# allow all incoming network traffic
 resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
    group     = ibm_is_security_group.sg1.id
    direction = "inbound"
-   remote    = "0.0.0.0/0"
-   protocol  = "all"
-  
+}
+# allow all ougoing network traffic
+resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
+   group     = ibm_is_security_group.sg1.id
+   direction = "outbound"
 }
 
 # Subnet 
