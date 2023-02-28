@@ -14,6 +14,7 @@ terraform {
 variable "ibmcloud_api_key" {
 type        = string
   description = "API Key that will be used to create resources"
+sensitive = true 
 }
 
 #variable "iaas_classic_username" {}
