@@ -5,7 +5,7 @@
 variable "ibmcloud_api_key" {
   type        = string
   sensitive   = true
-  default     = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  default     = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
   description = "API Key that will be used to create resources"
 }
 
@@ -69,7 +69,7 @@ variable "profile" {
 
 variable "vsi_number" {
   type        = number
-  default     = 2
+  default     = 1
   description = "Quantity of VSIs in each Zone"
 }
 
