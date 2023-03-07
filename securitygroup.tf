@@ -1,3 +1,7 @@
+############################
+# SGs and Network Traffic
+############################
+
 # Security group
 resource "ibm_is_security_group" "sg1" {
   name           = "${var.vpc_name}-sg1"

@@ -27,28 +27,6 @@ variable "vpc_name" {
   description = "Name for VPC"
 }
 
-# variable "zones" {
-#   type = list(string)
-#   //count = var.zones_number
-#   default = ["br-sao-1", "br-sao-2", "br-sao-3"]
-# }
-
-# variable "vpc_zone1" {
-#   default     = "br-sao-1"
-#   description = "Default zone 1 for br-sao"
-# }
-
-# variable "vpc_zone2" {
-#   default     = "br-sao-2"
-#   description = "Default zone 1 for br-sao"
-# }
-
-# variable "vpc_zone3" {
-#   default     = "br-sao-3"
-#   description = "Default zone 3 for br-sao"
-
-# }
-
 variable "res_group" {
   type        = string
   default     = "RG-Rafael"
@@ -78,3 +56,26 @@ variable "subnets_number" {
   default     = 2
   description = "Quantity of Zones in each Zone"
 }
+
+
+# variable "zones" {
+#   type = list(string)
+#   //count = var.zones_number
+#   default = ["br-sao-1", "br-sao-2", "br-sao-3"]
+# }
+
+# variable "vpc_zone1" {
+#   default     = "br-sao-1"
+#   description = "Default zone 1 for br-sao"
+# }
+
+# variable "vpc_zone2" {
+#   default     = "br-sao-2"
+#   description = "Default zone 1 for br-sao"
+# }
+
+# variable "vpc_zone3" {
+#   default     = "br-sao-3"
+#   description = "Default zone 3 for br-sao"
+
+# }
