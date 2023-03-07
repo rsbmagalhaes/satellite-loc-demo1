@@ -5,7 +5,7 @@
 variable "ibmcloud_api_key" {
   type        = string
   sensitive   = true
-  default     = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  default     = "apikey.txt here"
   description = "API Key that will be used to create resources"
 }
 
