@@ -1,5 +1,9 @@
-.terraform.lock.hcl
-\.terraform\providers\registry.terraform.io\ibm-cloud\ibm\1.26.2\windows_amd64
-terraform.tfstate
-terraform.tfstate.backup
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# API Key
 apikey.txt
