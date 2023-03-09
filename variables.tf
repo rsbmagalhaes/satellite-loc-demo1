@@ -48,13 +48,13 @@ variable "profile" {
 variable "vsi_number" {
   type        = number
   default     = 1
-  description = "Quantity of VSIs in each Zone"
+  description = "Number of VSIs in each Zone"
 }
 
 variable "subnets_number" {
   type        = number
   default     = 2
-  description = "Quantity of Zones in each Zone"
+  description = "Number of Subnets in each Zone"
 }
 
 
