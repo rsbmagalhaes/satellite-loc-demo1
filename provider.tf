@@ -14,6 +14,7 @@ terraform {
 variable "ibmcloud_api_key" {
 type        = string
   description = "API Key that will be used to create resources"
+  default     = "teste"
 sensitive = true 
 }
 
@@ -28,8 +29,8 @@ variable "region" {
 
 variable "my_ssh_key_name" {
  type        = string
-#  default     = "c614fb3fa03847269c5319ac3a197e04"
-  description = "Your ssh key name"
+ default     = "your-key"
+ description = "Your ssh key name"
 }
 
 variable "vpc_name" {
